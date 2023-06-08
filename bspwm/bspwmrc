@@ -10,15 +10,24 @@
 # https://github.com/baskerville/sxhkd
 # https://github.com/baskerville/bspwm
 
+pkill sxhkd
 pgrep -x sxhkd > /dev/null || sxhkd &
+pkill nitrogen
 nitrogen --restore &
+pkill flameshot
 flameshot &
+pkill volumeicon
 volumeicon &
+pkill cbatticon
 cbatticon &
+pkill udiskie
 udiskie -t &
+pkill np-applet
 nm-applet &
+pkill dunst
 dunst -conf ~/.config/dunst/dunstrc &
-
+pkill picom
+picom -f --daemon --config ~/.config/picom/picom.conf &
 
 bspc monitor Virtual-1 -d I II III IV V VI VII VIII IX X
 
