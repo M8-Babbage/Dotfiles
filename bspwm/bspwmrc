@@ -17,6 +17,7 @@ volumeicon &
 cbatticon &
 udiskie -t &
 nm-applet &
+dunst -conf ~/.config/dunst/dunstrc &
 
 
 bspc monitor Virtual-1 -d I II III IV V VI VII VIII IX X
