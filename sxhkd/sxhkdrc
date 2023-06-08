@@ -18,9 +18,32 @@ super + Return
 super + @space
 	rofi -show run
 
+# Screenshots
+Print
+	flameshot gui
+
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
+
+# Google Chrome
+super + g
+	google-chrome-stable
+
+# Brightness
+XF86MonBrightnessUp
+	          brightnessctl set +10%
+
+XF86MonBrightnessDown
+										brightnessctl set 10%-
+
+# Audio
+XF86AudioLowerVolume
+										pactl set-sink-volume @DEFAULT_SINK@ -5%
+XF86AudioRaiseVolume
+										pactl set-sink-volume @DEFAULT_SINK@ +5%
+XF86AudioMute
+	     pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 #
 # bspwm hotkeys
