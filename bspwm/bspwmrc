@@ -1,4 +1,14 @@
 #! /bin/sh
+# ███████╗██████╗ 
+# ██╔════╝██╔══██╗  Edwin Páez (M8-Babbage)
+# █████╗  ██║  ██║  https://github.com/M8-Babbage
+# ██╔══╝  ██║  ██║
+# ███████╗██████╔╝
+# ╚══════╝╚═════╝ 
+#
+# A customized bspwm window manager.
+# https://github.com/baskerville/sxhkd
+# https://github.com/baskerville/bspwm
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 nitrogen --restore &
