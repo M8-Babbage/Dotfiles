@@ -12,6 +12,8 @@
 
 pkill sxhkd
 pgrep -x sxhkd > /dev/null || sxhkd &
+pkill polybar
+polybar &
 pkill nitrogen
 nitrogen --restore &
 pkill flameshot
