@@ -30,20 +30,25 @@ super + Escape
 super + g
 	google-chrome-stable
 
+# Thunar
+super + e
+	thunar
+
 # Brightness
 XF86MonBrightnessUp
-	          brightnessctl set +10%
+	brightnessctl set +10%
 
 XF86MonBrightnessDown
-										brightnessctl set 10%-
+	brightnessctl set 10%-
 
 # Audio
 XF86AudioLowerVolume
-										pactl set-sink-volume @DEFAULT_SINK@ -5%
+	pactl set-sink-volume @DEFAULT_SINK@ -5%
+
 XF86AudioRaiseVolume
-										pactl set-sink-volume @DEFAULT_SINK@ +5%
+	pactl set-sink-volume @DEFAULT_SINK@ +5%
 XF86AudioMute
-	     pactl set-sink-mute @DEFAULT_SINK@ toggle
+	pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 #
 # bspwm hotkeys
