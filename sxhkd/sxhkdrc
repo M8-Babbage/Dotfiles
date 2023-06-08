@@ -1,6 +1,14 @@
+#!usr/bin/env bash
+# ███████╗██████╗ 
+# ██╔════╝██╔══██╗  Edwin Páez (M8-Babbage)
+# █████╗  ██║  ██║  https://github.com/M8-Babbage
+# ██╔══╝  ██║  ██║
+# ███████╗██████╔╝
+# ╚══════╝╚═════╝ 
 #
-# wm independent hotkeys
-#
+# A customized sxhkdrc for the bspwm window manager.
+# https://github.com/baskerville/sxhkd
+# https://github.com/baskerville/bspwm
 
 # terminal emulator
 super + Return
@@ -8,7 +16,7 @@ super + Return
 
 # program launcher
 super + @space
-	dmenu_run
+	rofi -show run
 
 # make sxhkd reload its configuration files:
 super + Escape
