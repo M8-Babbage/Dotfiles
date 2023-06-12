@@ -10,7 +10,18 @@
 # https://github.com/baskerville/sxhkd
 # https://github.com/baskerville/bspwm
 
+# Configurar monitores automáticamente
+exec ~/.config/settings/monitors.sh &
+for monitor in $(bspc query -M)
+do
+    # set the workspaces on each monitor to 1-9
+    bspc monitor $monitor -d 1 2 3
+    #polybar hidden when fullscreen for vlc, youtube, mpv ...
+    xdo below -t $(xdo id -n root) $(xdo id -a polybar-main_$monitor)
+done
+
 # Setear los monitores automáticamente para polybar
+pkill polybar
 if type "xrandr"; then
   for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
     MONITOR=$m polybar --reload example &
@@ -25,7 +36,6 @@ pkill nitrogen
 nitrogen --restore &
 pkill dunst
 dunst -conf ~/.config/dunst/dunstrc &
-exec ~/.config/settings/monitors.sh &
 pkill volumeicon
 volumeicon &
 pkill cbatticon
@@ -36,17 +46,6 @@ pkill nm-applet
 nm-applet &
 pkill flameshot
 flameshot &
-pkill polybar
-polybar &
-
-# Configurar monitores automáticamente
-for monitor in $(bspc query -M)
-do
-    # set the workspaces on each monitor to 1-9
-    bspc monitor $monitor -d 1 2 3 4 5 6 7 8 9
-    #polybar hidden when fullscreen for vlc, youtube, mpv ...
-    xdo below -t $(xdo id -n root) $(xdo id -a polybar-main_$monitor)
-done
 
 
 bspc config border_width         2
