@@ -1,4 +1,5 @@
 #!usr/bin/env bash
+# ==========================================================
 # ███████╗██████╗ 
 # ██╔════╝██╔══██╗  Edwin Páez (M8-Babbage)
 # █████╗  ██║  ██║  https://github.com/M8-Babbage
@@ -6,9 +7,10 @@
 # ███████╗██████╔╝
 # ╚══════╝╚═════╝ 
 #
-# A customized sxhkdrc for the bspwm window manager.
+# A customized bspwm window manager.
 # https://github.com/baskerville/sxhkd
 # https://github.com/baskerville/bspwm
+# ==========================================================
 
 # terminal emulator
 super + Return
@@ -29,6 +31,10 @@ super + Escape
 # Google Chrome
 super + g
 	microsoft-edge-stable
+
+# IntelliJ
+super + i
+	/home/babbage/Programs/idea-IU-231.9011.34/bin/idea.sh
 
 # Thunar
 super + e
@@ -159,3 +165,4 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
+

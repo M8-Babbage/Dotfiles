@@ -1,4 +1,5 @@
 #! /bin/sh
+# ==========================================================
 # ███████╗██████╗ 
 # ██╔════╝██╔══██╗  Edwin Páez (M8-Babbage)
 # █████╗  ██║  ██║  https://github.com/M8-Babbage
@@ -9,27 +10,20 @@
 # A customized bspwm window manager.
 # https://github.com/baskerville/sxhkd
 # https://github.com/baskerville/bspwm
+# ==========================================================
 
-# Configurar monitores automáticamente
-exec ~/.config/settings/monitors.sh &
-for monitor in $(bspc query -M)
-do
-    # set the workspaces on each monitor to 1-9
-    bspc monitor $monitor -d 1 2 3
-    #polybar hidden when fullscreen for vlc, youtube, mpv ...
-    xdo below -t $(xdo id -n root) $(xdo id -a polybar-main_$monitor)
-done
-
-# Setear los monitores automáticamente para polybar
-pkill polybar
-if type "xrandr"; then
-  for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
-    MONITOR=$m polybar --reload example &
-  done
+# Configurar dispositivos de salida por medio de un script generado usando arandr
+# Si la entrada HDMI-1 está conectada configuramos los monitores con sus posiciones, basados en arandr
+if [[ $(xrandr -q | grep 'HDMI-1 connected') ]]; then
+  xrandr --output eDP-1 --primary --mode 1366x768 --pos 225x1080 --rotate normal --output HDMI-1 --mode 1920x1080 --pos 0x0 --rotate normal --output DP-1 --off --output HDMI-2 --off
+  bspc monitor eDP-1 -d I II III IV &
+  bspc monitor HDMI-1 -d V VI VII VIII &
 else
-  polybar --reload example &
+  xrandr --output eDP-1 --primary --mode 1366x768 --pos 225x1080 --rotate normal --output HDMI-1 --off --output DP-1 --off --output HDMI-2 --off
+  bspc monitor eDP-1 -d I II III IV &
 fi
 
+# Iniciamos los servicios
 pkill sxhkd
 pgrep -x sxhkd > /dev/null || sxhkd &
 pkill nitrogen
@@ -46,10 +40,7 @@ pkill nm-applet
 nm-applet &
 pkill flameshot
 flameshot &
-
-
-bspc config border_width         2
-bspc config window_gap          12
+exec ~/.config/polybar/launch.sh
 
 #### BSPWM configuration ####
 bspc config border_width                  2
