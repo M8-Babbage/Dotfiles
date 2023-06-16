@@ -30,7 +30,7 @@ super + Escape
 
 # Google Chrome
 super + g
-	microsoft-edge-stable
+	google-chrome-stable
 
 # IntelliJ
 super + i
